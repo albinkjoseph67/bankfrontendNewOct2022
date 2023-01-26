@@ -1,0 +1,45 @@
+<!-- header -->
+<app-header></app-header>
+
+
+
+
+<!-- login Page -->
+
+<div class="row">
+    <div class="col-7 ">
+        <img class="m-4 " width="100%" height="600px" src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-14062,resizemode-1,msid-93714181/industry/banking/finance/banking/public-sector-banks-to-raise-more-capital-to-fund-loan-growth-though-overall-issuances-may-halve-report.jpg" alt="login image">
+    </div>
+    <div class="col-5 mt-5 p-5">
+        <form (ngSubmit)="login()" [formGroup]="loginForm"  class="border p-5 mt-5 me-5">
+            <div>
+                <input name="acno" formControlName="acno" type="text" placeholder="Account Number" class="form-control" id="floatingInput"> 
+            </div>
+
+            <div *ngIf="this.loginForm.get('acno')?.errors&&this.loginForm.get('acno')?.touched" class="text-danger">Invalid Account Number</div>
+
+            <div class="mt-4">
+                <input name="pswd" formControlName="pswd" type="password" placeholder="Password" class="form-control" id="floatingPassword"> 
+            </div>
+
+            <div *ngIf="this.loginForm.get('pswd')?.errors&&this.loginForm.get('pswd')?.touched" class="text-danger">Invalid Password</div>
+
+            <!-- errorMsg -->
+            <div class="text-danger"> {{errorMsg}}</div>
+
+            <div class="mt-4">
+                <button  type="submit" class="btn btn-primary">
+                    Login &nbsp;
+                    <span *ngIf="successMsg" class="spinner-border text-light" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </span>
+                </button>
+                &nbsp;
+                <span>
+                    New User? Click Here to <a routerLink="/register">Register</a>
+                </span>
+            </div>
+        </form>
+    </div>
+    
+</div>
